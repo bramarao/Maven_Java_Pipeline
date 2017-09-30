@@ -30,7 +30,10 @@ if (MULTIBRANCH) {
 
 gitlabCommitStatus("Build") {
 
-  //node('java-8-node') {
+  //node('java-8-node') 
+ 
+  node {
+
 
     stage('SCM') {
       // Checkout the commit that triggered the build
@@ -60,7 +63,7 @@ gitlabCommitStatus("Build") {
       withSonarQubeEnv('sonarqube.cognis.com') {
         sh "${scannerHome}/bin/sonar-scanner"
       }
-//    }
+  }
   }
 
 }
