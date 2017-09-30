@@ -13,7 +13,7 @@
 //   - gitlab-login: for cloning the repo from Gitlab.
 // Others:
 //   - Gitlab connection configured so can push pipeline status
-String GIT_REPO = 'git@git.test.com:devops/java-example.git'
+String GIT_REPO = 'https://github.com/bramarao/Maven_Java_Pipeline.git'
 String GIT_LOGIN = 'gitlab-login'
 String COMMIT = ''
 String SHORT_COMMIT = ''
@@ -30,7 +30,7 @@ if (MULTIBRANCH) {
 
 gitlabCommitStatus("Build") {
 
-  node('java-8-node') {
+  //node('java-8-node') {
 
     stage('SCM') {
       // Checkout the commit that triggered the build
@@ -60,7 +60,7 @@ gitlabCommitStatus("Build") {
       withSonarQubeEnv('sonarqube.cognis.com') {
         sh "${scannerHome}/bin/sonar-scanner"
       }
-    }
+//    }
   }
 
 }
